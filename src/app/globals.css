@@ -23,7 +23,7 @@
   --color-border: var(--border);
   --color-card: var(--card);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  --font-serif: var(--font-dm-serif);
 }
 
 html {
@@ -52,9 +52,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'DM Serif Display', Georgia, serif;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 ::selection {

@@ -1,4 +1,4 @@
-import { Briefcase } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 interface WorkItem {
   text: string;
@@ -34,44 +34,100 @@ const representativeWork: WorkItem[] = [
   },
 ];
 
+const stats = [
+  { value: "$10M+", label: "Client Savings" },
+  { value: "70+", label: "Case Citations" },
+  { value: "2K+", label: "Cases Handled" },
+];
+
 export default function Work() {
   return (
-    <section id="work" className="bg-white" style={{ padding: "128px 0" }}>
+    <section id="work" className="bg-[#0d0d0d]" style={{ padding: "120px 0" }}>
       <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-        <div className="text-center" style={{ marginBottom: "80px" }}>
-          <span className="text-[#CCA45B] font-semibold text-sm uppercase tracking-widest">Experience</span>
-          <h2 className="text-4xl lg:text-6xl font-bold text-[#1a1a2e] mt-4 mb-6">
-            Representative Work
-          </h2>
-          <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            Sample engagements demonstrating breadth and depth of expertise
-          </p>
-        </div>
-        <div className="space-y-4">
-          {representativeWork.map((work, index) => (
-            <div
-              key={index}
-              className="group flex flex-col lg:flex-row lg:items-center gap-6 bg-[#fafafa] rounded-2xl hover:bg-[#1a1a2e] transition-all duration-500 cursor-pointer"
-              style={{ padding: "32px" }}
-            >
-              <div className="flex items-center gap-4 lg:w-40 shrink-0">
-                <div className="w-12 h-12 bg-[#1a1a2e] group-hover:bg-[#CCA45B] rounded-xl flex items-center justify-center transition-colors">
-                  <Briefcase className="w-6 h-6 text-white group-hover:text-[#1a1a2e]" />
+        <div className="grid lg:grid-cols-12 gap-12">
+          {/* Left Column - Stats & Testimonial */}
+          <div className="lg:col-span-5 space-y-6">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 gap-6">
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className={`rounded-3xl ${index === 0 ? 'bg-[#CCA45B]' : 'bg-[#1a1a2e]'}`}
+                  style={{ padding: "40px" }}
+                >
+                  <p className={`text-6xl lg:text-7xl font-bold mb-2 ${index === 0 ? 'text-[#0d0d0d]' : 'text-white'}`}>
+                    {stat.value}
+                  </p>
+                  <p className={`text-lg ${index === 0 ? 'text-[#0d0d0d]/70' : 'text-gray-400'}`}>
+                    {stat.label}
+                  </p>
                 </div>
-                <div className="lg:hidden">
-                  <p className="text-2xl font-bold text-[#CCA45B]">{work.value}</p>
-                  <p className="text-xs text-gray-500 group-hover:text-gray-400 uppercase tracking-wider">{work.label}</p>
-                </div>
+              ))}
+            </div>
+
+            {/* Testimonial */}
+            <div className="bg-[#1a1a2e] rounded-3xl" style={{ padding: "40px" }}>
+              <div className="flex items-center gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-[#CCA45B] text-[#CCA45B]" />
+                ))}
               </div>
-              <p className="text-gray-700 group-hover:text-gray-300 text-lg leading-relaxed flex-1 transition-colors">
-                {work.text}
+              <Quote className="w-10 h-10 text-[#CCA45B]/30 mb-4" />
+              <p className="text-white text-lg leading-relaxed mb-6">
+                &quot;Shahzad&apos;s expertise in complex commercial litigation was invaluable. 
+                His strategic approach saved our company millions.&quot;
               </p>
-              <div className="hidden lg:block text-right shrink-0">
-                <p className="text-3xl font-bold text-[#CCA45B]">{work.value}</p>
-                <p className="text-xs text-gray-500 group-hover:text-gray-400 uppercase tracking-wider">{work.label}</p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#CCA45B] rounded-full flex items-center justify-center">
+                  <span className="text-[#0d0d0d] font-bold">TS</span>
+                </div>
+                <div>
+                  <p className="text-white font-semibold">Toronto Star</p>
+                  <p className="text-gray-400 text-sm">Media Coverage</p>
+                </div>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right Column - Work List */}
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-3 h-3 bg-[#CCA45B] rounded-full"></div>
+              <span className="text-[#CCA45B] font-semibold text-sm uppercase tracking-wider">Representative Work</span>
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-10">
+              Success Stories for<br />
+              <span className="text-[#CCA45B]">Our Clients</span>
+            </h2>
+
+            <div className="space-y-4">
+              {representativeWork.map((work, index) => (
+                <div
+                  key={index}
+                  className="group bg-[#1a1a2e] rounded-2xl border border-white/5 hover:border-[#CCA45B]/30 transition-all duration-300 cursor-pointer"
+                  style={{ padding: "28px" }}
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="shrink-0">
+                      <div className="w-16 h-16 bg-[#CCA45B]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#CCA45B] transition-colors">
+                        <span className="text-2xl font-bold text-[#CCA45B] group-hover:text-[#0d0d0d] transition-colors">
+                          {work.value}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <span className="inline-block text-[#CCA45B] text-xs font-bold uppercase tracking-wider mb-2">
+                        {work.label}
+                      </span>
+                      <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors">
+                        {work.text}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
