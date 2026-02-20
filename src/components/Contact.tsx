@@ -1,33 +1,70 @@
 import Image from "next/image";
 import { Mail, MapPin, ArrowRight, Clock } from "lucide-react";
 
+const newsItems = [
+  {
+    title: "Legal News You Need to Know",
+    date: "Feb 15, 2025",
+    category: "Legal Updates",
+  },
+  {
+    title: "Understanding Commercial Litigation",
+    date: "Feb 10, 2025",
+    category: "Insights",
+  },
+  {
+    title: "Estate Planning Best Practices",
+    date: "Feb 5, 2025",
+    category: "Guides",
+  },
+];
+
 export default function Contact() {
   return (
     <>
-      {/* CTA Section */}
-      <section className="bg-[#CCA45B]" style={{ padding: "80px 0" }}>
+      {/* News Section */}
+      <section className="bg-[#f8f8f8]" style={{ padding: "100px 0" }}>
         <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          {/* Section Header */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8" style={{ marginBottom: "48px" }}>
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-[#0d0d0d] mb-3">
-                Let&apos;s Build Something<br />
-                <span className="text-white">Wonderful Together</span>
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-8 h-[2px] bg-[#CCA45B]"></div>
+                <span className="text-[#CCA45B] text-sm font-medium uppercase tracking-wider">News</span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-normal text-[#1e3a5f] leading-tight">
+                Legal News You<br />
+                <span className="italic">Need to Know</span>
               </h2>
             </div>
             <a
-              href="#contact"
-              className="inline-flex items-center gap-3 bg-[#0d0d0d] text-white font-semibold rounded-full hover:bg-white hover:text-[#0d0d0d] transition-all"
-              style={{ padding: "18px 32px" }}
+              href="#"
+              className="inline-flex items-center gap-2 text-[#1e3a5f] font-semibold border-b-2 border-[#1e3a5f] hover:border-[#CCA45B] hover:text-[#CCA45B] transition-all"
+              style={{ paddingBottom: "4px" }}
             >
-              Free Consultation
-              <ArrowRight className="w-5 h-5" />
+              View All News
+              <ArrowRight className="w-4 h-4" />
             </a>
+          </div>
+
+          {/* News Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {newsItems.map((item, index) => (
+              <div key={index} className="group cursor-pointer">
+                <div className="bg-white mb-6" style={{ height: "220px" }}></div>
+                <span className="text-[#CCA45B] text-sm font-medium">{item.category}</span>
+                <h3 className="text-xl font-bold text-[#1e3a5f] mt-2 mb-3 group-hover:text-[#CCA45B] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-sm">{item.date}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="bg-[#0d0d0d]" style={{ padding: "120px 0" }}>
+      <section id="contact" className="bg-white" style={{ padding: "120px 0" }}>
         <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
           <div className="grid lg:grid-cols-12 gap-12">
             {/* Left - Contact Info */}
@@ -36,7 +73,7 @@ export default function Contact() {
                 <div className="w-3 h-3 bg-[#CCA45B] rounded-full"></div>
                 <span className="text-[#CCA45B] font-semibold text-sm uppercase tracking-wider">Contact Us</span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">
                 Get in Touch<br />
                 <span className="text-[#CCA45B]">With Us</span>
               </h2>
@@ -140,27 +177,76 @@ export default function Contact() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0d0d0d] border-t border-white/10" style={{ padding: "48px 0" }}>
+      <footer className="bg-[#1e3a5f]" style={{ padding: "80px 0 40px" }}>
         <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-            <div className="flex items-center gap-4">
+          <div className="grid md:grid-cols-4 gap-12" style={{ marginBottom: "60px" }}>
+            {/* Logo & Info */}
+            <div className="md:col-span-1">
               <Image
                 src="/images/logo.png"
                 alt="Covenant LLP"
-                width={140}
-                height={40}
-                className="h-10 w-auto brightness-0 invert opacity-80"
+                width={150}
+                height={45}
+                className="h-12 w-auto brightness-0 invert mb-6"
               />
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Expert legal counsel for complex commercial matters and estate planning.
+              </p>
             </div>
-            <div className="flex items-center gap-8 text-gray-400">
-              <a href="#about" className="hover:text-[#CCA45B] transition-colors">About</a>
-              <a href="#cases" className="hover:text-[#CCA45B] transition-colors">Cases</a>
-              <a href="#publications" className="hover:text-[#CCA45B] transition-colors">Publications</a>
-              <a href="#contact" className="hover:text-[#CCA45B] transition-colors">Contact</a>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-white font-semibold mb-6">Pages</h4>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-300 hover:text-[#CCA45B] transition-colors">Home</a></li>
+                <li><a href="#about" className="text-gray-300 hover:text-[#CCA45B] transition-colors">About Us</a></li>
+                <li><a href="#background" className="text-gray-300 hover:text-[#CCA45B] transition-colors">Services</a></li>
+                <li><a href="#contact" className="text-gray-300 hover:text-[#CCA45B] transition-colors">Contact Us</a></li>
+              </ul>
             </div>
-            <p className="text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} Shahzad Siddiqui. All rights reserved.
-            </p>
+
+            {/* Services */}
+            <div>
+              <h4 className="text-white font-semibold mb-6">Services</h4>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-300 hover:text-[#CCA45B] transition-colors">Commercial Litigation</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-[#CCA45B] transition-colors">Estate Planning</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-[#CCA45B] transition-colors">International Law</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-[#CCA45B] transition-colors">Legal Consultation</a></li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h4 className="text-white font-semibold mb-6">Contact</h4>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-[#CCA45B] shrink-0 mt-0.5" />
+                  <span>Toronto, Ontario, Canada</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-[#CCA45B] shrink-0 mt-0.5" />
+                  <span>contact@covenantllp.com</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-[#CCA45B] shrink-0 mt-0.5" />
+                  <span>Mon - Fri: 9AM - 6PM</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-white/10" style={{ paddingTop: "30px" }}>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <p className="text-gray-400 text-sm">
+                &copy; {new Date().getFullYear()} Shahzad Siddiqui. All rights reserved.
+              </p>
+              <div className="flex items-center gap-6 text-gray-400 text-sm">
+                <a href="#" className="hover:text-[#CCA45B] transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-[#CCA45B] transition-colors">Terms of Service</a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

@@ -1,135 +1,84 @@
-import { Star, Quote } from "lucide-react";
+"use client";
 
-interface WorkItem {
-  text: string;
-  value: string;
-  label: string;
-}
+import Image from "next/image";
+import { useState } from "react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 
-const representativeWork: WorkItem[] = [
+const faqItems = [
   {
-    text: "Assisting a TSX-V listed tech company in ongoing litigation matters and collective savings of over $10 million.",
-    value: "$10M+",
-    label: "Savings",
+    question: "What areas of law do you specialize in?",
+    answer: "We specialize in commercial litigation, estate planning, wills and trusts, and international law. Our expertise spans complex business disputes, real estate litigation, and appellate matters.",
   },
   {
-    text: "Litigated breach of fiduciary duty and conversion of property action for a Canadian television broadcaster.",
-    value: "Media",
-    label: "Industry",
+    question: "How do I schedule a consultation?",
+    answer: "You can schedule a consultation by contacting us through our website, calling our office directly, or sending an email. We offer both in-person and virtual consultations.",
   },
   {
-    text: "Retained by world's third largest manufacturer of fragrances, based in Tianjin, China, on complex, multi-party, long-running litigation involving contamination of commercial real estate in Toronto, Canada.",
-    value: "Global",
-    label: "Scope",
+    question: "What should I bring to my first meeting?",
+    answer: "Please bring any relevant documents related to your case, including contracts, correspondence, and any court documents you may have received.",
   },
   {
-    text: "Hired by the Ontario Public Guardian and Trustee to prosecute an elder financial abuse case.",
-    value: "Public",
-    label: "Sector",
+    question: "How are your fees structured?",
+    answer: "Our fees vary depending on the complexity of the case. We offer hourly rates, flat fees for certain services, and retainer arrangements for ongoing matters.",
   },
   {
-    text: "Represented Canada's largest grocery and baking company in appellate tax litigation.",
-    value: "#1",
-    label: "Client Size",
+    question: "Do you handle cases outside of Toronto?",
+    answer: "Yes, we handle cases throughout Ontario and have experience with matters involving international jurisdictions, including China and the United States.",
   },
-];
-
-const stats = [
-  { value: "$10M+", label: "Client Savings" },
-  { value: "70+", label: "Case Citations" },
-  { value: "2K+", label: "Cases Handled" },
 ];
 
 export default function Work() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
-    <section id="work" className="bg-[#0d0d0d]" style={{ padding: "120px 0" }}>
-      <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-        <div className="grid lg:grid-cols-12 gap-12">
-          {/* Left Column - Stats & Testimonial */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 gap-6">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className={`rounded-3xl ${index === 0 ? 'bg-[#CCA45B]' : 'bg-[#1a1a2e]'}`}
-                  style={{ padding: "40px" }}
-                >
-                  <p className={`text-6xl lg:text-7xl font-bold mb-2 ${index === 0 ? 'text-[#0d0d0d]' : 'text-white'}`}>
-                    {stat.value}
-                  </p>
-                  <p className={`text-lg ${index === 0 ? 'text-[#0d0d0d]/70' : 'text-gray-400'}`}>
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Testimonial */}
-            <div className="bg-[#1a1a2e] rounded-3xl" style={{ padding: "40px" }}>
-              <div className="flex items-center gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#CCA45B] text-[#CCA45B]" />
-                ))}
+    <>
+      {/* FAQ Section */}
+      <section id="work" className="bg-white" style={{ padding: "100px 0" }}>
+        <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Left - Header */}
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-8 h-[2px] bg-[#CCA45B]"></div>
+                <span className="text-[#CCA45B] text-sm font-medium uppercase tracking-wider">FAQ</span>
               </div>
-              <Quote className="w-10 h-10 text-[#CCA45B]/30 mb-4" />
-              <p className="text-white text-lg leading-relaxed mb-6">
-                &quot;Shahzad&apos;s expertise in complex commercial litigation was invaluable. 
-                His strategic approach saved our company millions.&quot;
+              <h2 className="text-4xl lg:text-5xl font-normal text-[#1e3a5f] leading-tight mb-6">
+                Got Questions?<br />
+                <span className="italic">We&apos;ve Got Answers</span>
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Find answers to common questions about our legal services, consultation process, and what to expect when working with us.
               </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#CCA45B] rounded-full flex items-center justify-center">
-                  <span className="text-[#0d0d0d] font-bold">TS</span>
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Toronto Star</p>
-                  <p className="text-gray-400 text-sm">Media Coverage</p>
-                </div>
-              </div>
             </div>
-          </div>
 
-          {/* Right Column - Work List */}
-          <div className="lg:col-span-7">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-3 h-3 bg-[#CCA45B] rounded-full"></div>
-              <span className="text-[#CCA45B] font-semibold text-sm uppercase tracking-wider">Representative Work</span>
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-10">
-              Success Stories for<br />
-              <span className="text-[#CCA45B]">Our Clients</span>
-            </h2>
-
+            {/* Right - Accordion */}
             <div className="space-y-4">
-              {representativeWork.map((work, index) => (
+              {faqItems.map((item, index) => (
                 <div
                   key={index}
-                  className="group bg-[#1a1a2e] rounded-2xl border border-white/5 hover:border-[#CCA45B]/30 transition-all duration-300 cursor-pointer"
-                  style={{ padding: "28px" }}
+                  className={`border ${openIndex === index ? 'border-[#CCA45B] bg-white' : 'border-gray-200 bg-white'} transition-all`}
                 >
-                  <div className="flex items-start gap-5">
-                    <div className="shrink-0">
-                      <div className="w-16 h-16 bg-[#CCA45B]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#CCA45B] transition-colors">
-                        <span className="text-2xl font-bold text-[#CCA45B] group-hover:text-[#0d0d0d] transition-colors">
-                          {work.value}
-                        </span>
-                      </div>
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="w-full flex items-center justify-between text-left"
+                    style={{ padding: "20px 24px" }}
+                  >
+                    <span className={`font-semibold ${openIndex === index ? 'text-[#CCA45B]' : 'text-[#1e3a5f]'}`}>
+                      {item.question}
+                    </span>
+                    <ChevronDown className={`w-5 h-5 text-[#CCA45B] transition-transform ${openIndex === index ? 'rotate-180' : ''}`} />
+                  </button>
+                  {openIndex === index && (
+                    <div className="border-t border-gray-100" style={{ padding: "20px 24px" }}>
+                      <p className="text-gray-600 leading-relaxed">{item.answer}</p>
                     </div>
-                    <div className="flex-1">
-                      <span className="inline-block text-[#CCA45B] text-xs font-bold uppercase tracking-wider mb-2">
-                        {work.label}
-                      </span>
-                      <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors">
-                        {work.text}
-                      </p>
-                    </div>
-                  </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

@@ -1,100 +1,162 @@
-import { BookOpen, ArrowUpRight, Newspaper } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Check } from "lucide-react";
 
-interface Publication {
-  title: string;
-  type: string;
-  year: string;
-  publisher?: string;
-}
-
-const publications: Publication[] = [
+const pricingPlans = [
   {
-    title: "American Lawyer: Twelve Attorneys Who Have Transformed the United States",
-    type: "Book",
-    year: "2024",
+    name: "Basic Consultation",
+    price: "$850",
+    period: "per session",
+    description: "Perfect for initial case assessment",
+    features: [
+      "60-minute consultation",
+      "Case evaluation report",
+      "Legal strategy overview",
+      "Follow-up email support",
+    ],
+    highlighted: false,
   },
   {
-    title: "Wills, Trusts and Estate Drafting in Canada",
-    publisher: "Thomson Reuters",
-    type: "Book",
-    year: "2023",
+    name: "Standard Package",
+    price: "$759",
+    period: "per month",
+    description: "For ongoing legal matters",
+    features: [
+      "Monthly consultations",
+      "Document review",
+      "Court representation",
+      "Priority scheduling",
+      "24/7 phone support",
+    ],
+    highlighted: true,
   },
   {
-    title: "Estate Planning for the Wealthy Entrepreneur",
-    publisher: "Financial Post",
-    type: "Article",
-    year: "2022",
+    name: "Premium Retainer",
+    price: "$999",
+    period: "per month",
+    description: "Comprehensive legal partnership",
+    features: [
+      "Unlimited consultations",
+      "Full case management",
+      "Trial preparation",
+      "Expert witnesses",
+      "Dedicated attorney",
+    ],
+    highlighted: false,
   },
 ];
 
 export default function Publications() {
   return (
-    <section id="publications" className="bg-white" style={{ padding: "120px 0" }}>
-      <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-        {/* Section Header */}
-        <div className="text-center" style={{ marginBottom: "64px" }}>
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-3 h-3 bg-[#CCA45B] rounded-full"></div>
-            <span className="text-[#CCA45B] font-semibold text-sm uppercase tracking-wider">Publications</span>
+    <>
+      {/* CTA Banner */}
+      <section className="bg-[#1e3a5f] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            {/* Left - Image */}
+            <div className="relative" style={{ height: "400px" }}>
+              <Image
+                src="/images/shahzad-siddiqui.jpg"
+                alt="Shahzad Siddiqui"
+                fill
+                className="object-cover object-top"
+              />
+            </div>
+            
+            {/* Right - Content */}
+            <div style={{ padding: "60px 0" }}>
+              <h2 className="text-3xl lg:text-4xl font-normal text-white leading-tight mb-6">
+                Always ready to assist<br />
+                for <span className="text-[#CCA45B] italic">24/7 online</span>
+              </h2>
+              <p className="text-gray-300 mb-8">
+                Get immediate legal assistance whenever you need it. Our team is always available to help with your legal matters.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-[#CCA45B] text-[#1e3a5f] font-semibold transition-all hover:bg-white"
+                style={{ padding: "16px 28px" }}
+              >
+                Contact Us
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
           </div>
-          <h2 className="text-4xl lg:text-6xl font-bold text-[#0d0d0d] leading-tight mb-6">
-            Latest News <span className="text-[#CCA45B]">& Articles</span>
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Contributing to legal scholarship and public discourse
-          </p>
         </div>
+      </section>
 
-        {/* Publications Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {publications.map((pub, index) => (
-            <div
-              key={index}
-              className="group bg-[#fafafa] rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer"
-            >
-              {/* Image/Header Area */}
-              <div className="relative bg-[#0d0d0d] overflow-hidden" style={{ height: "200px" }}>
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#0d0d0d]"></div>
-                <div className="absolute top-4 left-4">
-                  <span className="inline-block bg-[#CCA45B] text-[#0d0d0d] text-xs font-bold uppercase tracking-wider rounded-full" style={{ padding: "6px 14px" }}>
-                    {pub.type}
+      {/* Pricing Section */}
+      <section id="publications" className="bg-[#f8f8f8]" style={{ padding: "100px 0" }}>
+        <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
+          {/* Section Header */}
+          <div className="text-center" style={{ marginBottom: "64px" }}>
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="w-8 h-[2px] bg-[#CCA45B]"></div>
+              <span className="text-[#CCA45B] text-sm font-medium uppercase tracking-wider">Pricing</span>
+              <div className="w-8 h-[2px] bg-[#CCA45B]"></div>
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-normal text-[#1e3a5f] leading-tight mb-4">
+              Pricing Plan Tailored for<br />
+              <span className="italic">Every Need</span>
+            </h2>
+          </div>
+
+          {/* Pricing Cards */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {pricingPlans.map((plan, index) => (
+              <div
+                key={index}
+                className={`relative ${plan.highlighted ? 'bg-[#1e3a5f] text-white' : 'bg-white'} border border-gray-100`}
+                style={{ padding: "40px" }}
+              >
+                {plan.highlighted && (
+                  <div className="absolute top-0 right-0 bg-[#CCA45B] text-[#1e3a5f] text-xs font-bold uppercase" style={{ padding: "8px 16px" }}>
+                    Popular
+                  </div>
+                )}
+                
+                <h3 className={`text-xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-[#1e3a5f]'}`}>
+                  {plan.name}
+                </h3>
+                <p className={`text-sm mb-6 ${plan.highlighted ? 'text-gray-300' : 'text-gray-500'}`}>
+                  {plan.description}
+                </p>
+                
+                <div className="mb-8">
+                  <span className={`text-5xl font-bold ${plan.highlighted ? 'text-[#CCA45B]' : 'text-[#1e3a5f]'}`}>
+                    {plan.price}
+                  </span>
+                  <span className={`text-sm ${plan.highlighted ? 'text-gray-300' : 'text-gray-500'}`}>
+                    /{plan.period}
                   </span>
                 </div>
-                <div className="absolute top-4 right-4">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#CCA45B] transition-colors">
-                    <ArrowUpRight className="w-5 h-5 text-white group-hover:text-[#0d0d0d] transition-colors" />
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-4">
-                  <div className="w-14 h-14 bg-[#CCA45B] rounded-2xl flex items-center justify-center">
-                    {pub.type === "Book" ? (
-                      <BookOpen className="w-7 h-7 text-[#0d0d0d]" />
-                    ) : (
-                      <Newspaper className="w-7 h-7 text-[#0d0d0d]" />
-                    )}
-                  </div>
-                </div>
-              </div>
 
-              {/* Content */}
-              <div style={{ padding: "28px" }}>
-                <div className="flex items-center gap-3 mb-4 text-gray-500 text-sm">
-                  <span>{pub.year}</span>
-                  {pub.publisher && (
-                    <>
-                      <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                      <span>{pub.publisher}</span>
-                    </>
-                  )}
-                </div>
-                <h3 className="text-lg font-bold text-[#0d0d0d] leading-snug group-hover:text-[#CCA45B] transition-colors">
-                  {pub.title}
-                </h3>
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3">
+                      <Check className={`w-5 h-5 ${plan.highlighted ? 'text-[#CCA45B]' : 'text-[#CCA45B]'}`} />
+                      <span className={plan.highlighted ? 'text-gray-200' : 'text-gray-600'}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contact"
+                  className={`block text-center font-semibold transition-all ${
+                    plan.highlighted 
+                      ? 'bg-[#CCA45B] text-[#1e3a5f] hover:bg-white' 
+                      : 'bg-[#1e3a5f] text-white hover:bg-[#CCA45B] hover:text-[#1e3a5f]'
+                  }`}
+                  style={{ padding: "16px" }}
+                >
+                  Get Started
+                </a>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
