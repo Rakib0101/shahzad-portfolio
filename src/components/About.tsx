@@ -15,11 +15,11 @@ export default function About() {
               <span className="text-[#CCA45B] text-sm font-medium uppercase tracking-wider">About Us</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-normal text-[#1e3a5f] leading-tight mb-8">
-              More Than 500 Lawyers —Your Legal Saviors
+              Managing Partner of Covenant LLP
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Shahzad Siddiqui is the Managing Partner of Covenant LLP, bringing decades of 
-              experience in complex commercial litigation, estate planning, and international law.
+              Shahzad Siddiqui has been involved in some of the most important legal actions in Ontario, 
+              including landmark cases cited by the Supreme Court of Canada and provincial Courts of Appeal.
             </p>
             <a
               href="#cases"
@@ -34,12 +34,12 @@ export default function About() {
           {/* Right - Big Stats */}
           <div className="grid grid-cols-2 gap-8">
             <div className="border-l-4 border-[#CCA45B]" style={{ paddingLeft: "24px" }}>
-              <p className="text-6xl lg:text-7xl font-bold text-[#1e3a5f] mb-2">350+</p>
-              <p className="text-gray-500">Successful Cases</p>
+              <p className="text-6xl lg:text-7xl font-bold text-[#1e3a5f] mb-2">70+</p>
+              <p className="text-gray-500">Case Citations</p>
             </div>
             <div className="border-l-4 border-[#1e3a5f]" style={{ paddingLeft: "24px" }}>
-              <p className="text-6xl lg:text-7xl font-bold text-[#1e3a5f] mb-2">9.4</p>
-              <p className="text-gray-500">Client Rating</p>
+              <p className="text-6xl lg:text-7xl font-bold text-[#1e3a5f] mb-2">Top 22</p>
+              <p className="text-gray-500">Toronto Litigators</p>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function About() {
             {/* Floating Card */}
             <div className="absolute -bottom-8 -right-8 bg-[#CCA45B]" style={{ padding: "32px", maxWidth: "280px" }}>
               <p className="text-[#1e3a5f] text-lg font-medium leading-relaxed">
-                Featured in Toronto Star and MacLean&apos;s magazine for landmark cases.
+                Featured in Toronto Star and the September 2025 issue of MacLean&apos;s magazine.
               </p>
             </div>
           </div>

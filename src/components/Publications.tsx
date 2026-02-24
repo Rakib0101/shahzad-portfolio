@@ -1,47 +1,24 @@
 import Image from "next/image";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, BookOpen, Newspaper } from "lucide-react";
 
-const pricingPlans = [
+const publications = [
   {
-    name: "Basic Consultation",
-    price: "$850",
-    period: "per session",
-    description: "Perfect for initial case assessment",
-    features: [
-      "60-minute consultation",
-      "Case evaluation report",
-      "Legal strategy overview",
-      "Follow-up email support",
-    ],
-    highlighted: false,
+    title: "American Lawyer: Twelve Attorneys Who Have Transformed the United States",
+    type: "Book",
+    icon: BookOpen,
+    description: "A comprehensive study of influential American attorneys and their impact on the legal landscape.",
   },
   {
-    name: "Standard Package",
-    price: "$759",
-    period: "per month",
-    description: "For ongoing legal matters",
-    features: [
-      "Monthly consultations",
-      "Document review",
-      "Court representation",
-      "Priority scheduling",
-      "24/7 phone support",
-    ],
-    highlighted: true,
+    title: "Wills, Trusts and Estate Drafting in Canada",
+    type: "Book - Thomson Reuters",
+    icon: BookOpen,
+    description: "Published by Thomson Reuters, a definitive guide to estate planning and drafting in Canada.",
   },
   {
-    name: "Premium Retainer",
-    price: "$999",
-    period: "per month",
-    description: "Comprehensive legal partnership",
-    features: [
-      "Unlimited consultations",
-      "Full case management",
-      "Trial preparation",
-      "Expert witnesses",
-      "Dedicated attorney",
-    ],
-    highlighted: false,
+    title: "Estate Planning for the Wealthy Entrepreneur",
+    type: "Financial Post",
+    icon: Newspaper,
+    description: "Expert insights on estate planning strategies for high-net-worth business owners.",
   },
 ];
 
@@ -65,11 +42,12 @@ export default function Publications() {
             {/* Right - Content */}
             <div style={{ padding: "60px 0" }}>
               <h2 className="text-3xl lg:text-4xl font-normal text-white leading-tight mb-6">
-                Always ready to assist<br />
-                for <span className="text-[#CCA45B] italic">24/7 online</span>
+                Harvard Law Lecturer &<br />
+                <span className="text-[#CCA45B] italic">Published Author</span>
               </h2>
               <p className="text-gray-300 mb-8">
-                Get immediate legal assistance whenever you need it. Our team is always available to help with your legal matters.
+                Shahzad lectured on Abrahamic finance at Harvard Law School in March 2010. 
+                He has authored several influential publications on law and estate planning.
               </p>
               <a
                 href="#contact"
@@ -84,76 +62,48 @@ export default function Publications() {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Publications Section */}
       <section id="publications" className="bg-[#f8f8f8]" style={{ padding: "100px 0" }}>
         <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
           {/* Section Header */}
           <div className="text-center" style={{ marginBottom: "64px" }}>
             <div className="flex items-center justify-center gap-2 mb-6">
               <div className="w-8 h-[2px] bg-[#CCA45B]"></div>
-              <span className="text-[#CCA45B] text-sm font-medium uppercase tracking-wider">Pricing</span>
+              <span className="text-[#CCA45B] text-sm font-medium uppercase tracking-wider">Publications</span>
               <div className="w-8 h-[2px] bg-[#CCA45B]"></div>
             </div>
             <h2 className="text-4xl lg:text-5xl font-normal text-[#1e3a5f] leading-tight mb-4">
-              Pricing Plan Tailored for<br />
-              <span className="italic">Every Need</span>
+              Published Works &<br />
+              <span className="italic">Legal Writings</span>
             </h2>
           </div>
 
-          {/* Pricing Cards */}
+          {/* Publications Cards */}
           <div className="grid md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, index) => (
-              <div
-                key={index}
-                className={`relative ${plan.highlighted ? 'bg-[#1e3a5f] text-white' : 'bg-white'} border border-gray-100`}
-                style={{ padding: "40px" }}
-              >
-                {plan.highlighted && (
-                  <div className="absolute top-0 right-0 bg-[#CCA45B] text-[#1e3a5f] text-xs font-bold uppercase" style={{ padding: "8px 16px" }}>
-                    Popular
-                  </div>
-                )}
-                
-                <h3 className={`text-xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-[#1e3a5f]'}`}>
-                  {plan.name}
-                </h3>
-                <p className={`text-sm mb-6 ${plan.highlighted ? 'text-gray-300' : 'text-gray-500'}`}>
-                  {plan.description}
-                </p>
-                
-                <div className="mb-8">
-                  <span className={`text-5xl font-bold ${plan.highlighted ? 'text-[#CCA45B]' : 'text-[#1e3a5f]'}`}>
-                    {plan.price}
-                  </span>
-                  <span className={`text-sm ${plan.highlighted ? 'text-gray-300' : 'text-gray-500'}`}>
-                    /{plan.period}
-                  </span>
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <Check className={`w-5 h-5 ${plan.highlighted ? 'text-[#CCA45B]' : 'text-[#CCA45B]'}`} />
-                      <span className={plan.highlighted ? 'text-gray-200' : 'text-gray-600'}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#contact"
-                  className={`block text-center font-semibold transition-all ${
-                    plan.highlighted 
-                      ? 'bg-[#CCA45B] text-[#1e3a5f] hover:bg-white' 
-                      : 'bg-[#1e3a5f] text-white hover:bg-[#CCA45B] hover:text-[#1e3a5f]'
-                  }`}
-                  style={{ padding: "16px" }}
+            {publications.map((pub, index) => {
+              const IconComponent = pub.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+                  style={{ padding: "40px" }}
                 >
-                  Get Started
-                </a>
-              </div>
-            ))}
+                  <div className="w-16 h-16 bg-[#1e3a5f] flex items-center justify-center mb-6 group-hover:bg-[#CCA45B] transition-colors">
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  <span className="text-[#CCA45B] text-sm font-semibold uppercase tracking-wider">
+                    {pub.type}
+                  </span>
+                  <h3 className="text-xl font-bold text-[#1e3a5f] mt-2 mb-4 group-hover:text-[#CCA45B] transition-colors">
+                    {pub.title}
+                  </h3>
+                  <p className="text-gray-500 leading-relaxed">
+                    {pub.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

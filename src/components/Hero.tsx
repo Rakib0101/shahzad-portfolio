@@ -61,7 +61,7 @@ export default function Hero() {
               
               {/* Experience Badge */}
               <div className="absolute top-8 right-8 bg-[#CCA45B] text-center" style={{ padding: "24px 20px", width: "120px" }}>
-                <p className="text-4xl font-bold text-[#1e3a5f]">15+</p>
+                <p className="text-4xl font-bold text-[#1e3a5f]">20+</p>
                 <p className="text-[#1e3a5f] text-xs font-medium uppercase tracking-wider mt-1">Years<br />Experience</p>
               </div>
 
