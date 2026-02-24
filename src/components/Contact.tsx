@@ -187,7 +187,7 @@ export default function Contact() {
                 alt="Covenant LLP"
                 width={150}
                 height={45}
-                className="h-12 w-auto brightness-0 invert mb-6"
+                className="h-12 md:h-20 w-auto brightness-0 invert mb-6"
               />
               <p className="text-gray-300 text-sm leading-relaxed">
                 Expert legal counsel for complex commercial matters and estate planning.
