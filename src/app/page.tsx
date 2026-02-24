@@ -5,9 +5,9 @@ import {
   Cases,
   Background,
   Publications,
-  Work,
   Contact,
 } from "@/components";
+import FAQ from "@/components/faq";
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
       <Cases />
       <Background />
       <Publications />
-      <Work />
+      <FAQ />
       <Contact />
     </main>
   );

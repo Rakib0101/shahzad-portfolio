@@ -4,5 +4,5 @@ export { default as About } from './About';
 export { default as Cases } from './Cases';
 export { default as Background } from './Background';
 export { default as Publications } from './Publications';
-export { default as Work } from './Work';
+export { default as Work } from './faq';
 export { default as Contact } from './Contact';

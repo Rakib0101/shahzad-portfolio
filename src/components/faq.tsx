@@ -27,7 +27,7 @@ const faqItems = [
   },
 ];
 
-export default function Work() {
+export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
